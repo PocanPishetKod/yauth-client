@@ -25,8 +25,7 @@ import { RoutesProvider } from './routes-provider';
 import { AuthModule } from '../auth/auth.module';
 import { YAuthApiConfigurationProviderImpl } from '../configuration/yauth-api-cinfig.provider';
 import { HttpClientModule } from '@angular/common/http';
-import { YAuthApiModule } from 'projects/yauth-api/src/lib/yauth-api.module';
-import { YAuthApiConfigurationProvider } from 'projects/yauth-api/src/lib/yauth-config-provider';
+import { YAuthApiConfigurationProvider, YAuthApiModule } from 'yauth-api';
 
 @NgModule({
     declarations: [

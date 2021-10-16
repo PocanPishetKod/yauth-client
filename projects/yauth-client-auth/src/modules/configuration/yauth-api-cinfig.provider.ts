@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { YAuthApiConfigurationProvider } from "projects/yauth-api/src/lib/yauth-config-provider";
-import { YAuthApiConfiguration } from "projects/yauth-api/src/lib/yauth-configuration";
+import { YAuthApiConfiguration, YAuthApiConfigurationProvider } from "yauth-api";
 import { Configuration } from "./configuration";
 import { ConfigurationProvider } from "./configuration.provider";
 

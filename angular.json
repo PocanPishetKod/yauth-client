@@ -70,7 +70,8 @@
                     "options": {
                         "port": 4200,
                         "ssl": true,
-                        "sslCert": "/home/ghostly_ghost/certs/https.crt",
+                        "sslCert": "/home/ghostly_ghost/certs/angularCert/local-cert.pem",
+                        "sslKey": "/home/ghostly_ghost/certs/angularCert/local-key.pem",
                         "proxyConfig": "projects/yauth-client-auth/src/proxy.conf.json"
                     },
                     "configurations": {                        
