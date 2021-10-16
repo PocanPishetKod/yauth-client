@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    authority: "https://localhost:4200/api",
+    scope: "openid email roles YCloud",
+    clientId: "user-client",
+    redirectUri: "https://localhost:4200/signin/redirect",
+    postLogoutRedirectUri: ""
 };
 
 /*

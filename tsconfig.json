@@ -19,7 +19,23 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "yauth-api": [
+        "dist/yauth-api/yauth-api",
+        "dist/yauth-api"
+      ],
+      "yauth-auth": [
+        "dist/yauth-auth/yauth-auth",
+        "dist/yauth-auth"
+      ],
+      "crypto": [
+        "node_modules/crypto-browserify"
+      ],
+      "stream": [
+          "node_modules/stream-browserify"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

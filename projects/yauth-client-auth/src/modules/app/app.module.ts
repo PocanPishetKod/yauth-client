@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { forwardRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HeaderModule } from '../header/header.module';
 
@@ -19,14 +19,28 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfigurationModule } from '../configuration/configuration.module';
+import { RouterModule } from '@angular/router';
+import { RoutesProvider } from './routes-provider';
+import { AuthModule } from '../auth/auth.module';
+import { YAuthApiConfigurationProviderImpl } from '../configuration/yauth-api-cinfig.provider';
+import { HttpClientModule } from '@angular/common/http';
+import { YAuthApiModule } from 'projects/yauth-api/src/lib/yauth-api.module';
+import { YAuthApiConfigurationProvider } from 'projects/yauth-api/src/lib/yauth-config-provider';
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
+        RouterModule.forRoot(RoutesProvider.provide()),
+        HttpClientModule,
         BrowserModule,
         HeaderModule,
+        YAuthApiModule,
+        ConfigurationModule,
+        AuthModule,
+        RouterModule,
         MdbAccordionModule,
         MdbCarouselModule,
         MdbCheckboxModule,
@@ -44,7 +58,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MdbValidationModule,
         BrowserAnimationsModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide: YAuthApiConfigurationProvider,
+            useClass: forwardRef(() => YAuthApiConfigurationProviderImpl)
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

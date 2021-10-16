@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <input [(ngModel)]="signUpModel.email" mdbInput type="text" id="email" class="form-control" />
+            <label mdbLabel class="form-label" for="email">Email</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <input [(ngModel)]="signUpModel.password" mdbInput type="password" id="password" class="form-control" />
+            <label mdbLabel class="form-label" for="password">Password</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button (click)="signUp()" mdbRipple type="button" class="btn btn-secondary">Button</button>
+        </div>
+    </div>
+</div>
