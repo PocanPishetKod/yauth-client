@@ -4,7 +4,6 @@ import { ActivatedRoute } from "@angular/router";
 import { SignInRequest, YAuthApiService } from "yauth-api";
 import { SignInModel } from "./signin.model";
 import { AuthService, AuthConfiguration } from "yhome-auth";
-import { environment } from "projects/yauth-client-auth/src/environments/environment";
 import { Configuration } from "../../../configuration/configuration";
 import { ConfigurationProvider } from "../../../configuration/configuration.provider";
 

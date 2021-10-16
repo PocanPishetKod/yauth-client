@@ -1,16 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { environment } from "projects/yauth-client-auth/src/environments/environment";
 import { AuthConfiguration, AuthService } from "yhome-auth";
 import { RouterService } from "../../../app/router.service";
+import { Configuration } from "../../../configuration/configuration";
+import { ConfigurationProvider } from "../../../configuration/configuration.provider";
 
 @Component({
     selector: "signin-redirect",
     template: ""
 })
 export class SignInRedirectComponent implements OnInit {
-    constructor(private _routerService: RouterService,
-        private _activatedRoute: ActivatedRoute) {
+    private readonly _configuration: Configuration;
+
+    constructor(private _activatedRoute: ActivatedRoute,
+        configurationProvider: ConfigurationProvider) {
+            this._configuration = configurationProvider.provide();
     }
 
     public async ngOnInit(): Promise<void> {
@@ -22,10 +26,10 @@ export class SignInRedirectComponent implements OnInit {
 
             let authService = new AuthService(
                 new AuthConfiguration(
-                    environment.clientId,
-                    environment.scope,
-                    environment.redirectUri,
-                    environment.authority));
+                    this._configuration.clientId,
+                    this._configuration.scope,
+                    this._configuration.redirectUri,
+                    this._configuration.authority));
 
             let token = await authService.endAuthentication(code);
             console.log(token);
