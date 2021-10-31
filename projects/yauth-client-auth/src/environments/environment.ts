@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     authority: "https://localhost:4200/api",
-    scope: "openid email roles YCloud",
+    scope: "openid email roles YCloud.Client",
     clientId: "user-client",
     redirectUri: "https://localhost:4200/signin/redirect",
     postLogoutRedirectUri: ""

@@ -6,6 +6,8 @@ import { SignInModel } from "./signin.model";
 import { AuthService, AuthConfiguration } from "yhome-auth";
 import { Configuration } from "../../../configuration/configuration";
 import { ConfigurationProvider } from "../../../configuration/configuration.provider";
+import { RouterService } from "../../../app/router.service";
+import { AuthContextService } from "../../services/auth-context.service";
 
 @Component({
     selector: "signin",
@@ -20,7 +22,9 @@ export class SignInComponent {
 
     constructor(private _authApi: YAuthApiService,
         private activatedRoute: ActivatedRoute,
-        configurationProvider: ConfigurationProvider) {
+        configurationProvider: ConfigurationProvider,
+        private _routerService: RouterService,
+        private _authContextService: AuthContextService) {
         this._authService = null;
         this.signInModel = new SignInModel();
         this._configuration = configurationProvider.provide();
@@ -29,6 +33,9 @@ export class SignInComponent {
         activatedRoute.queryParams
             .subscribe(params => {
                 this._returnUrl = params["ReturnUrl"];
+                if (!this._returnUrl) {
+                    this._returnUrl = _authContextService.returnUri;
+                }
             });
     }
 
@@ -65,10 +72,20 @@ export class SignInComponent {
             else {
                 await this.internalSignIn();
             }
+
+            this._authContextService.returnUri = null;
         }
         catch (e) {
             console.log(e);
             throw e;
         }
+    }
+
+    public async goToSignUp(): Promise<void> {
+        if (this._returnUrl) {
+            this._authContextService.returnUri = this._returnUrl;
+        }
+
+        await this._routerService.goToSignUp();
     }
 }

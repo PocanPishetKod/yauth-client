@@ -25,4 +25,8 @@ export class SignUpComponent {
 
         await this._routerService.goToSignIn();
     }
+
+    public async goToSignIn(): Promise<void> {
+        await this._routerService.goToSignIn();
+    }
 }

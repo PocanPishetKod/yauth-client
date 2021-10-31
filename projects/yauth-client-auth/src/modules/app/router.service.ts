@@ -15,6 +15,6 @@ export class RouterService {
     }
 
     public async goToSignIn(): Promise<void> {
-        await this._router.navigate([`/${RoutesProvider.signUpUri}`]);
+        await this._router.navigate([`/${RoutesProvider.signInUri}`]);
     }
 }
